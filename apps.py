@@ -4,7 +4,7 @@ from google import genai
 
 app = Flask(__name__)
 
-client = genai.Client(api_key="")
+client = genai.Client(api_key="AIzaSyBqWaQRW9rkGVVBQ_JQp7XdC-oJEmVhErE")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
