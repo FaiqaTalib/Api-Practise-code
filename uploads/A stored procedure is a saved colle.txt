@@ -1,0 +1,9 @@
+
+ 
+stored procedure
+A stored procedure is a saved collection of SQL statements that 
+you can execute multiple times without rewriting the code each time
+t lets you prepare a task once,
+ then run it over and over again whenever you want by calling the procedure.
+It can take input parameters.
+It can perform multiple commands: SELECT, INSERT, UPDATE, DELETE, etc.

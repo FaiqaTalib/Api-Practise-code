@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Summarizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+
+       body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+        color: #1f2937;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 15px;
+        width: 100%;
+        max-width: 700px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        color: #1e3a8a;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="file"] {
+        display: block;
+        margin: 20px 0;
+    }
+
+    button {
+        background: #3b82f6;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #2563eb;
+    }
+
+    .summary {
+        margin-top: 30px;
+        background: #f1f5f9;
+        padding: 20px;
+        border-radius: 10px;
+        white-space: pre-wrap; /* preserve line breaks */
+        word-wrap: break-word; /* wrap long words */
+        max-height: 400px; /* limit height for long content */
+        overflow-y: auto; /* scroll for large summaries */
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #1f2937;
+        border: 1px solid #cbd5e1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 1.6rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 15px;
+        }
+        button {
+            width: 100%;
+        }
+    }
+
+    /* Optional: customize scrollbar for light theme */
+    .summary::-webkit-scrollbar {
+        width: 8px;
+    }
+    .summary::-webkit-scrollbar-thumb {
+        background-color: #3b82f6;
+        border-radius: 4px;
+    }
+    .summary::-webkit-scrollbar-track {
+        background-color: #e2e8f0;
+        border-radius: 4px;
+    }
+
+
+    </style>
+</head>
+<body>
+     
+    <div class="container">
+        <h1>Document Summarizer</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Summarize</button>
+        </form>
+        {% if summary %}
+            <div class="summary">{{ summary }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

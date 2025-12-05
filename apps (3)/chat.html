@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gemini Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="chat-wrapper">
+    <h2 class="chat-title"> Gemini AI Chat</h2>
+
+    <div class="chat-box">
+
+          {% if user_input %}
+    <div class="message user">
+        {{ user_input }}
+    </div>
+    {% endif %}
+        {% if answer %}
+        <div class="message ai">
+            {{ answer }}
+        </div>
+        {% endif %}
+    </div>
+
+    <form method="POST" class="input-area">
+        <textarea name="user_input" placeholder="Type your message..."></textarea>
+        <button type="submit">Send</button>
+    </form>
+
+</div>
+
+</body>
+</html>

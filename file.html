@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Insights | Understanding Artificial Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --danger: #ef4444;
+            --danger-light: #fef2f2;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M500,97C126.7,96.3,0.8,19.8,0,0v100l1000,0V1C1000,59.4,779.4,97.9,500,97z" fill="%23ffffff"/></svg>');
+            background-size: 100% 100px;
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero .btn {
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        /* AI Options Section - NEW SECTION */
+        .ai-options {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .ai-option-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+            border-color: var(--primary);
+        }
+
+        .option-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .ai-option-card:nth-child(2) .option-icon {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+
+        .ai-option-card:nth-child(3) .option-icon {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+        }
+
+        .ai-option-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .ai-option-card p {
+            color: var(--gray);
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .option-features {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .option-features span {
+            display: flex;
+            align-items: center;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .option-features i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .option-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            padding: 14px 20px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: auto;
+            font-family: 'Poppins', sans-serif;
+            display: block;
+            text-align: center;
+        }
+
+        .ai-option-card:nth-child(2) .option-btn {
+            background: #10b981;
+        }
+
+        .ai-option-card:nth-child(2) .option-btn:hover {
+            background: #0da271;
+        }
+
+        .ai-option-card:nth-child(3) .option-btn {
+            background: #f59e0b;
+        }
+
+        .ai-option-card:nth-child(3) .option-btn:hover {
+            background: #d97706;
+        }
+
+        .option-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* AI Story Section */
+        .ai-story {
+            background-color: white;
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #f8fafc;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .story-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .story-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .story-content p {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .story-content .highlight {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        /* Types of AI Section */
+        .ai-types {
+            background-color: #f9fafb;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .card p {
+            color: var(--gray);
+        }
+
+        /* Use Cases Section */
+        .use-cases {
+            background-color: white;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .use-case-item {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .use-case-item:hover {
+            transform: translateY(-5px);
+            border-left: 5px solid var(--primary);
+        }
+
+        .use-case-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #e0e7ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .use-case-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .use-case-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: #f0f9ff;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .benefit-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .benefit-item h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .benefit-item i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Risks Section */
+        .risks {
+            background-color: var(--danger-light);
+        }
+
+        .risks .section-title h2 {
+            color: var(--danger);
+        }
+
+        .risks .section-title h2::after {
+            background: var(--danger);
+        }
+
+        .risks-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .risk-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border: 1px solid #fecaca;
+        }
+
+        .risk-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--danger);
+        }
+
+        .risk-item h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--danger);
+        }
+
+        .risk-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Future Section */
+        .future-ai {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+        }
+
+        .future-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .future-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .future-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .future-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .highlight-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cards-container, .options-container, .risks-container, .benefits-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card, .ai-option-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .future-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .story-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">AI<span>Insights</span></a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#ai-options">Our AI Tools</a></li>
+                    <li><a href="#story">AI Story</a></li>
+                    <li><a href="#types">Types of AI</a></li>
+                    <li><a href="#use-cases">Use Cases</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#risks">Risks</a></li>
+                    <li><a href="#future">Future</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to the World of Artificial Intelligence</h1>
+                <p>Discover how AI is shaping the future of technology, business, and everyday life</p>
+                <a href="#ai-options" class="btn">Explore AI Tools</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Options Section - NEW -->
+    <section class="ai-options" id="ai-options">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our AI Solutions</h2>
+                <p>Explore our specialized AI tools designed for different purposes</p>
+            </div>
+            <div class="options-container">
+                <div class="ai-option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3>ChatGPT Assistant</h3>
+                    <p>Advanced conversational AI for answering questions, writing assistance, and creative tasks. Perfect for content creation, coding help, and learning.</p>
+                    <div class="option-features">
+                        <span><i class="fas fa-check"></i> Natural Conversations</span>
+                        <span><i class="fas fa-check"></i> Writing Support</span>
+                        <span><i class="fas fa-check"></i> Multi-language</span>
+                        <span><i class="fas fa-check"></i> Code Generation</span>
+                    </div>
+                    <a href="/" class="btn option-btn">Try ChatGPT</a>
+                </div>
+                
+                <div class="ai-option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>DALL-E Image Generator</h3>
+                    <p>Create stunning images from text descriptions with our AI-powered image generation tool. Generate art, designs, and visuals in seconds.</p>
+                    <div class="option-features">
+                        <span><i class="fas fa-check"></i> Text-to-Image</span>
+                        <span><i class="fas fa-check"></i> Multiple Art Styles</span>
+                        <span><i class="fas fa-check"></i> High Resolution</span>
+                        <span><i class="fas fa-check"></i> Custom Parameters</span>
+                    </div>
+                    <a href="dalle.html" class="btn option-btn">Generate Images</a>
+                </div>
+                
+                <div class="ai-option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>MusicAI Composer</h3>
+                    <p>Generate original music tracks and soundscapes using artificial intelligence algorithms. Create background scores, jingles, or full compositions.</p>
+                    <div class="option-features">
+                        <span><i class="fas fa-check"></i> Genre Selection</span>
+                        <span><i class="fas fa-check"></i> Custom Length</span>
+                        <span><i class="fas fa-check"></i> Royalty-Free</span>
+                        <span><i class="fas fa-check"></i> Mood-Based Generation</span>
+                    </div>
+                    <a href="musica i.html" class="btn option-btn">Create Music</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Story Section -->
+    <section class="ai-story" id="story">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI Ki Kahani</h2>
+                <p>Understanding Artificial Intelligence in Simple Words</p>
+            </div>
+            <div class="story-content">
+                <h3>AI Kya Hota Hai?</h3>
+                <p>Imagine a child learning to recognize animals. At first, they might confuse a cat with a dog, but as you show them more pictures and tell them "This is a cat" or "This is a dog," they slowly learn the differences. <span class="highlight">Artificial Intelligence (AI)</span> is like that child, but created by humans using computers and code.</p>
+                <p>AI is a branch of computer science that tries to make machines smart enough to perform tasks that usually require human intelligence. These tasks include learning from experience, understanding language, recognizing patterns, solving problems, and making decisions.</p>
+                <p>The "learning" part is crucial. Just like our child example, AI systems get better with more data and experience. They find patterns in information and use those patterns to make predictions or decisions. For example, when Netflix suggests a movie you might like, it's using AI to analyze what you've watched before and find similar movies.</p>
+                <p>In simple terms, <span class="highlight">AI is about creating machines that can think and learn</span> - not exactly like humans, but in ways that can help us solve complex problems, automate repetitive tasks, and discover new insights from massive amounts of data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Types of AI Section -->
+    <section class="ai-types" id="types">
+        <div class="container">
+            <div class="section-title">
+                <h2>Types of Artificial Intelligence</h2>
+                <p>Understanding the different levels of AI capabilities</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Narrow AI</h3>
+                    <p>Also known as Weak AI, this is designed to perform a specific task. Examples include voice assistants like Siri, recommendation algorithms, and image recognition systems. This is the only type of AI that exists today.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>General AI</h3>
+                    <p>Also called Strong AI or AGI, this would have the ability to understand, learn, and apply knowledge across different domains, just like a human being. It could perform any intellectual task that a human can do.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Super AI</h3>
+                    <p>This hypothetical AI would surpass human intelligence in all areas - creativity, problem-solving, and emotional intelligence. Super AI remains a theoretical concept and is often discussed in futuristic scenarios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <div class="section-title">
+                <h2>Real-World AI Applications</h2>
+                <p>How AI is transforming industries and everyday life</p>
+            </div>
+            <div class="grid-container">
+                <div class="use-case-item">
+                    <div class="use-case-icon">
+                        <i class="fas fa-unlock-alt"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h4>Face Unlock</h4>
+                        <p>AI-powered facial recognition that allows secure access to smartphones and devices by analyzing unique facial features.</p>
+                    </div>
+                </div>
+                <div class="use-case-item">
+                    <div class="use-case-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h4>YouTube Recommendations</h4>
+                        <p>AI algorithms analyze your viewing history to suggest videos you're likely to enjoy, keeping you engaged on the platform.</p>
+                    </div>
+                </div>
+                <div class="use-case-item">
+                    <div class="use-case-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h4>Medical AI</h4>
+                        <p>AI systems help doctors diagnose diseases from medical images, predict patient outcomes, and discover new drugs.</p>
+                    </div>
+                </div>
+                <div class="use-case-item">
+                    <div class="use-case-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h4>Self-Driving Cars</h4>
+                        <p>AI processes sensor data to navigate roads, detect obstacles, and make driving decisions without human intervention.</p>
+                    </div>
+                </div>
+                <div class="use-case-item">
+                    <div class="use-case-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h4>Chatbots</h4>
+                        <p>AI-powered virtual assistants that understand natural language to provide customer support and answer questions 24/7.</p>
+                    </div>
+                </div>
+                <div class="use-case-item">
+                    <div class="use-case-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h4>Fraud Detection</h4>
+                        <p>AI analyzes transaction patterns to identify suspicious activities and prevent financial fraud in real-time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Benefits of Artificial Intelligence</h2>
+                <p>The positive impact AI is having on our world</p>
+            </div>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h4><i class="fas fa-bolt"></i> Increased Efficiency</h4>
+                    <p>AI automates repetitive tasks, allowing humans to focus on creative and complex problem-solving activities.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4><i class="fas fa-stethoscope"></i> Improved Healthcare</h4>
+                    <p>AI helps in early disease detection, personalized treatment plans, and robotic surgeries with higher precision.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4><i class="fas fa-chart-line"></i> Data Analysis</h4>
+                    <p>AI can process and analyze massive datasets much faster than humans, uncovering valuable insights and patterns.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4><i class="fas fa-user-shield"></i> Enhanced Safety</h4>
+                    <p>AI powers advanced security systems, fraud detection, and predictive maintenance to prevent accidents.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4><i class="fas fa-robot"></i> 24/7 Availability</h4>
+                    <p>AI systems don't need breaks, can work continuously, and provide consistent performance at all times.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4><i class="fas fa-lightbulb"></i> Innovation Acceleration</h4>
+                    <p>AI assists researchers in scientific discoveries, drug development, and solving complex global challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risks Section -->
+    <section class="risks" id="risks">
+        <div class="container">
+            <div class="section-title">
+                <h2>Risks & Challenges of AI</h2>
+                <p>Important considerations as AI technology advances</p>
+            </div>
+            <div class="risks-container">
+                <div class="risk-item">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Job Displacement</h4>
+                    <p>Automation could replace certain jobs, particularly those involving routine tasks, requiring workforce retraining.</p>
+                </div>
+                <div class="risk-item">
+                    <h4><i class="fas fa-user-secret"></i> Privacy Concerns</h4>
+                    <p>AI systems often require vast amounts of personal data, raising concerns about surveillance and data protection.</p>
+                </div>
+                <div class="risk-item">
+                    <h4><i class="fas fa-balance-scale"></i> Bias & Discrimination</h4>
+                    <p>AI can inherit and amplify human biases present in training data, leading to unfair or discriminatory outcomes.</p>
+                </div>
+                <div class="risk-item">
+                    <h4><i class="fas fa-shield-alt"></i> Security Risks</h4>
+                    <p>AI systems could be vulnerable to hacking, manipulation, or could be weaponized for malicious purposes.</p>
+                </div>
+                <div class="risk-item">
+                    <h4><i class="fas fa-cogs"></i> Lack of Transparency</h4>
+                    <p>Complex AI models can be "black boxes" where it's difficult to understand how they arrive at specific decisions.</p>
+                </div>
+                <div class="risk-item">
+                    <h4><i class="fas fa-hand-paper"></i> Loss of Human Control</h4>
+                    <p>Advanced AI systems could potentially make autonomous decisions without human oversight or understanding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Section -->
+    <section class="future-ai" id="future">
+        <div class="container">
+            <div class="future-content">
+                <h2>The Future of Artificial Intelligence</h2>
+                <p>As AI continues to evolve, it promises to transform every aspect of our society. The journey from Narrow AI to General AI and beyond will redefine what's possible in technology, medicine, education, and creativity.</p>
+                <p>Future AI systems will likely work alongside humans as collaborative partners, enhancing our capabilities rather than replacing them. They'll help us solve complex global challenges like climate change, disease outbreaks, and resource management.</p>
+                <p>The key to a positive AI future lies in developing these technologies responsibly - with transparency, fairness, and human values at their core. As we stand at this technological crossroads, our choices today will shape the AI-powered world of tomorrow.</p>
+                <div class="future-highlights">
+                    <div class="highlight-item">Human-AI Collaboration</div>
+                    <div class="highlight-item">Personalized Education</div>
+                    <div class="highlight-item">Climate Solutions</div>
+                    <div class="highlight-item">Enhanced Creativity</div>
+                    <div class="highlight-item">Ethical AI Development</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">AI<span>Insights</span></a>
+                <p>Your guide to understanding Artificial Intelligence and its impact on our world</p>
+                <div class="copyright">
+                    <p>Created for AI Information Project | Designed with HTML & CSS</p>
+                    <p>All rights reserved &copy; <span id="currentYear"></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+                document.getElementById('mobileMenuBtn').querySelector('i').classList.remove('fa-times');
+                document.getElementById('mobileMenuBtn').querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
