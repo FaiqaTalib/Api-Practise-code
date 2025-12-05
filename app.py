@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # Load API Key
 # ---------------------------
 load_dotenv()
-genai.configure(api_key=os.getenv("AIzaSyBqWaQRW9rkGVVBQ_JQp7XdC-oJEmVhErE"))
+genai.configure(api_key=os.getenv(""))
 
 # ---------------------------
 # Initialize Gemini Model
